@@ -2,7 +2,7 @@
 Feeling lonely? Head to this app on https://hangcall.herokuapp.com/hangouts to join some google hangout rooms! Created using Django and Firebase.
 
 ## Interface
-<img src="demo_hangcalls.png"  width="1000" height="700"/>
+<img src="demo_hangcalls.png" />
 
 ## Running Locally
 
