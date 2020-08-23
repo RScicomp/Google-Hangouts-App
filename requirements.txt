@@ -1,0 +1,14 @@
+django
+gunicorn
+nltk
+numpy 
+pandas
+sklearn
+matplotlib
+stop-words
+psycopg2==2.7.5
+django-heroku
+pyexcel-xls
+openpyxl
+requests
+pyrebase

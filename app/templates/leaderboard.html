@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="{% static 'lang-logo.png'%}">
+    </a>
+    <h1>Leaderboard</h1>
+    <form action="/leaderboard/" method="Post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="file">
+   
+      <input type="submit" value="Leaderboard" enctype="multipart/form-data">
+   </form>
+  </div>
+</div>
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+     The above is a text summarizer. Input your text and get an immediate summary!
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-info-sign"></span> About</h3>
+      <ul>
+        <li>This app was deployed to Heroku. </li>
+        <li>The summarizer uses cosine similarity to calculate the most relevent sentences.</li>
+
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-link"></span> Github</h3>
+      <ul>
+        <li><a href="https://github.com/RScicomp/Djangoapp">Github</a></li>
+        <li>TODO: Input for number of sentences wanted.</li>
+      </ul>
+    </div>
+  </div> <!-- row -->
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

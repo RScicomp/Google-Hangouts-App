@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("March 31, 2020 11:59:59").getTime();
+    
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+      // Get today's date and time
+      var now = new Date().getTime();
+    
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+    
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+    
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+</script>
+<body>
+    <div class="text-center">
+        <p><b>Time before end of site</b></p>
+        <p id="demo"></p>
+    </div>
+    
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1>Hangouts</h1>
+    <br><br>
+    <img src="{% static 'demo.gif' %}">
+    <p>These google hangouts are meant to be places where you can study together, hangout, play music, discuss etc... Each room is limited to 10 people. Please be considerate when joining and enjoy! You can add your own link by adding a google hangouts link at the bottom.</p>
+
+    <p>Added Links:{{Name}} {{Link}}</p>
+    
+    {% for link in Data %}
+        <div class="alert alert-info text-center" role="alert">
+            <a href={{link.0}}>{{link.1}} </a>
+            <div>Occupants: {{link.2}}/10</div>
+        </div>
+    {% endfor %}
+
+    <p>Add your own google hangout link!</p>
+    <form action="/hangouts/" method="Post">
+      {% csrf_token %}
+
+      {{ form }}
+      <input type="submit" value="submit">
+   </form>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+      You need a Google account in order to use Google Hangouts
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-info-sign"></span> About</h3>
+      <ul>
+        <li>This app was deployed to Heroku. </li>
+        <li>If you have any issues please email : richard.gao@mail.mcgill.ca</li>
+
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-link"></span> Github</h3>
+      <ul>
+        <li><a href="https://github.com/RScicomp/Djangoapp">Github</a></li>
+        <li>TODO:</li>
+      </ul>
+    </div>
+  </div> <!-- row -->
+  </div>
+</div>
+</body>
+
+
+
+
+{% endblock %}

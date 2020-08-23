@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="{% static 'lang-logo.png'%}">
+    </a>
+    <h1>Word Counter</h1>
+    <p>Length : {{Length}}</p>
+    <form action="/words/" method="Post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="words">
+   </form>
+  </div>
+</div>
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+     The above gets the number of words
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-info-sign"></span> About</h3>
+      <ul>
+        <li>This app was deployed to Heroku. </li>
+        <li>Counts number of sentences.</li>
+
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-link"></span> Github</h3>
+      <ul>
+        <li><a href="https://github.com/RScicomp/Djangoapp">Github</a></li>
+        <li>TODO: Input for number of sentences wanted.</li>
+      </ul>
+    </div>
+  </div> <!-- row -->
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
